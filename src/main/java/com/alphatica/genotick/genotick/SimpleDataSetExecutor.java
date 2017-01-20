@@ -14,7 +14,7 @@ public class  SimpleDataSetExecutor implements DataSetExecutor {
         List<RobotResult> robotResultList = new ArrayList<>(robotDataList.size());
         for(RobotData robotData : robotDataList) {
             Prediction prediction = robotExecutor.executeRobot(robotData, robot);
-            RobotResult result = new RobotResult(prediction, robot, robotData);
+            RobotResult result = new RobotResult(prediction, robot, robotData, robotData.getActualChange());
             robotResultList.add(result);
         }
         return robotResultList;

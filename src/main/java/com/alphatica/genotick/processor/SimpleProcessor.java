@@ -171,8 +171,8 @@ public class SimpleProcessor extends Processor implements RobotExecutor {
             if(totalInstructionExecuted > robotInstructionLimit) {
                 break;
             }
-            instructionPointer =  Math.abs((instructionPointer + changeInstructionPointer) % instructionList.getSize());
-            changeInstructionPointer = 0;
+            //instructionPointer =  Math.abs((instructionPointer + changeInstructionPointer) % instructionList.getSize());
+            //changeInstructionPointer = 0;
         } while (!terminateInstructionList && !finished);
     }
 

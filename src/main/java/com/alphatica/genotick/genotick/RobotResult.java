@@ -9,13 +9,15 @@ public class RobotResult {
     private final RobotName name;
     private final RobotData data;
     private final Double weight;
+    private Double actualChange;
 
-    public RobotResult(Prediction prediction, Robot robot, RobotData data) {
+    public RobotResult(Prediction prediction, Robot robot, RobotData data, Double actualChange) {
 
         this.prediction = prediction;
         this.name = robot.getName();
         this.weight = robot.getWeight();
         this.data = data;
+        this.actualChange = actualChange;
     }
 
     @Override
@@ -33,5 +35,9 @@ public class RobotResult {
 
     public RobotData getData() {
         return data;
+    }
+
+    public Double getActualChange() {
+        return actualChange;
     }
 }

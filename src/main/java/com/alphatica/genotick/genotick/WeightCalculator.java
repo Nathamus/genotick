@@ -6,8 +6,13 @@ public class WeightCalculator {
 
 
     public static double calculateWeight(Robot robot) {
-        return calculateSquareOfDifference(robot);
+        return calculateTotalProfit(robot);
+//        return calculateSquareOfDifference(robot);
         //return calculateCorrectVsIncorrectPredictions(robot);
+    }
+
+    private static double calculateTotalProfit(Robot robot) {
+        return robot.getTotalProfit();
     }
 
     @SuppressWarnings("unused")

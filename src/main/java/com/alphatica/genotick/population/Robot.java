@@ -29,6 +29,7 @@ public class Robot implements Serializable {
     private int totalOutcomes;
     private long outcomesAtLastChild;
     private int bias;
+    private double totalProfit;
 
     public static Robot createEmptyRobot(int maximumDataOffset, int ignoreColumns) {
         return new Robot(maximumDataOffset, ignoreColumns);
@@ -56,11 +57,15 @@ public class Robot implements Serializable {
         this.ignoreColumns = ignoreColumns;
     }
 
-    public void recordPrediction(Prediction prediction) {
+    public void recordPrediction(Prediction prediction, Double actualChange) {
         if(prediction == Prediction.DOWN)
             bias--;
         else if(prediction == Prediction.UP)
             bias++;
+        if(!actualChange.isNaN()) {
+            double profit = prediction.getValue() * actualChange;
+            totalProfit += profit;
+        }
     }
 
     public void recordOutcomes(List<Outcome> outcomes) {
@@ -140,6 +145,10 @@ public class Robot implements Serializable {
         addFields(sb);
         addMainFunction(sb);
         return sb.toString();
+    }
+
+    public double getTotalProfit() {
+        return totalProfit;
     }
 
     private void addMainFunction(StringBuilder sb) throws IllegalAccessException {
